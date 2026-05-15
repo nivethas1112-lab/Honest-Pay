@@ -78,12 +78,13 @@
   background-color: white;
   border-radius: 1rem;
   border: 1px solid var(--border-color);
-  overflow: hidden;
+  overflow-x: auto;
   box-shadow: var(--shadow-sm);
 }
 
 .admin-table {
   width: 100%;
+  min-width: max-content;
   border-collapse: collapse;
   text-align: left;
 }

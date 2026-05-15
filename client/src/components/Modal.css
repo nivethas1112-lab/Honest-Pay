@@ -17,6 +17,7 @@
   background: white;
   width: 100%;
   max-width: 420px;
+  margin: 1rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
