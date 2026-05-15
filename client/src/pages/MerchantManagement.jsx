@@ -4,11 +4,11 @@ import './MerchantManagement.css';
 
 const MerchantManagement = () => {
   const products = [
-    { id: 'P001', name: 'iPhone 15 Pro', merchant: 'Tech Haven', category: 'Electronics', price: '$999', stock: 45, rating: '4.8', date: '2024-03-10', status: 'Approved' },
-    { id: 'P002', name: 'MacBook Air M2', merchant: 'Tech Haven', category: 'Electronics', price: '$1299', stock: 12, rating: '4.9', date: '2024-03-11', status: 'Pending' },
-    { id: 'P003', name: 'Summer Dress', merchant: 'Urban Style', category: 'Fashion', price: '$59', stock: 88, rating: '4.5', date: '2024-03-12', status: 'Approved' },
-    { id: 'P004', name: 'Running Shoes', merchant: 'Sporty Life', category: 'Footwear', price: '$120', stock: 0, rating: '4.2', date: '2024-03-13', status: 'Rejected' },
-    { id: 'P005', name: 'Smart Watch', merchant: 'Tech Haven', category: 'Wearables', price: '$299', stock: 30, rating: '4.7', date: '2024-03-14', status: 'Approved' },
+    { id: 'P001', name: 'iPhone 15 Pro', merchant: 'Tech Haven', category: 'Electronics', price: '₹99,900', stock: 45, rating: '4.8', date: '2024-03-10', status: 'Approved' },
+    { id: 'P002', name: 'MacBook Air M2', merchant: 'Tech Haven', category: 'Electronics', price: '₹1,29,900', stock: 12, rating: '4.9', date: '2024-03-11', status: 'Pending' },
+    { id: 'P003', name: 'Summer Dress', merchant: 'Urban Style', category: 'Fashion', price: '₹5,900', stock: 88, rating: '4.5', date: '2024-03-12', status: 'Approved' },
+    { id: 'P004', name: 'Running Shoes', merchant: 'Sporty Life', category: 'Footwear', price: '₹1,200', stock: 0, rating: '4.2', date: '2024-03-13', status: 'Rejected' },
+    { id: 'P005', name: 'Smart Watch', merchant: 'Tech Haven', category: 'Wearables', price: '₹2,999', stock: 30, rating: '4.7', date: '2024-03-14', status: 'Approved' },
   ];
 
   return (

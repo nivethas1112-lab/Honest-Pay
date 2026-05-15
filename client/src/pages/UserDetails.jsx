@@ -5,6 +5,7 @@ import './UserDetails.css';
 
 const UserDetails = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
   const [users, setUsers] = useState([
     { id: '101', name: 'Alex Johnson', email: 'alex@example.com', joined: '2024-01-15', location: 'New York, USA', status: 'Active', spent: '1,250.00', preferred: 'Badminton' },
@@ -26,6 +27,30 @@ const UserDetails = () => {
     setIsEditModalOpen(false);
   };
 
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newUser = {
+      id: Date.now().toString().slice(-3),
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      preferred: formData.get('preferred'),
+      joined: new Date().toISOString().split('T')[0],
+      location: 'Unknown',
+      status: 'Active',
+      spent: '0.00'
+    };
+    setUsers([...users, newUser]);
+    setIsAddModalOpen(false);
+  };
+
+  const handleDeleteUser = (id) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      setUsers(users.filter(user => user.id !== id));
+    }
+  };
+
   return (
     <div className="page-container">
       <div className="page-header">
@@ -35,7 +60,7 @@ const UserDetails = () => {
         </div>
         <div className="header-actions">
           <button className="btn btn-outline">Export Data</button>
-          <button className="btn btn-primary">Add New User</button>
+          <button className="btn btn-primary" onClick={() => setIsAddModalOpen(true)}>Add New User</button>
         </div>
       </div>
 
@@ -97,7 +122,7 @@ const UserDetails = () => {
                     <button className="icon-btn edit" onClick={() => handleEdit(user)} title="Edit">
                       <Edit size={16} />
                     </button>
-                    <button className="icon-btn delete" title="Delete">
+                    <button className="icon-btn delete" title="Delete" onClick={() => handleDeleteUser(user.id)}>
                       <Trash2 size={16} />
                     </button>
                   </div>
@@ -158,6 +183,35 @@ const UserDetails = () => {
             </div>
           </form>
         )}
+      </Modal>
+
+      <Modal 
+        isOpen={isAddModalOpen} 
+        onClose={() => setIsAddModalOpen(false)} 
+        title="Add New User"
+      >
+        <form className="edit-form" onSubmit={handleAddUser}>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required />
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input type="text" name="phone" required />
+          </div>
+          <div className="form-group">
+            <label>Preferred Activity</label>
+            <input type="text" name="preferred" />
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn-secondary" onClick={() => setIsAddModalOpen(false)}>Cancel</button>
+            <button type="submit" className="btn-primary">Add User</button>
+          </div>
+        </form>
       </Modal>
     </div>
   );

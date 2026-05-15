@@ -17,6 +17,7 @@ import './AdminUsers.css';
 const AdminUsers = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
   
   const [users, setUsers] = useState([
@@ -37,6 +38,30 @@ const AdminUsers = () => {
     setIsEditModalOpen(false);
   };
 
+  const handleAddAdmin = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newUser = {
+      id: Date.now(),
+      name: formData.get('name'),
+      email: formData.get('email'),
+      role: formData.get('role'),
+      phone: '+1 000-000-0000',
+      dept: 'General',
+      status: 'Active',
+      joined: new Date().toISOString().split('T')[0],
+      lastLogin: 'Just now'
+    };
+    setUsers([...users, newUser]);
+    setIsAddModalOpen(false);
+  };
+
+  const handleDeleteAdmin = (id) => {
+    if (window.confirm("Are you sure you want to delete this admin?")) {
+      setUsers(users.filter(user => user.id !== id));
+    }
+  };
+
   return (
     <div className="admin-users">
       <header className="page-header">
@@ -44,7 +69,7 @@ const AdminUsers = () => {
           <h1>Admin Users</h1>
           <p className="subtitle">Manage administrators and their access levels.</p>
         </div>
-        <button className="add-btn">
+        <button className="add-btn" onClick={() => setIsAddModalOpen(true)}>
           <Plus size={20} />
           <span>Add New Admin</span>
         </button>
@@ -122,7 +147,7 @@ const AdminUsers = () => {
                     >
                       <Edit size={16} />
                     </button>
-                    <button className="icon-btn delete" title="Delete">
+                    <button className="icon-btn delete" title="Delete" onClick={() => handleDeleteAdmin(user.id)}>
                       <Trash2 size={16} />
                     </button>
                     <button className="icon-btn more">
@@ -189,6 +214,35 @@ const AdminUsers = () => {
             </div>
           </form>
         )}
+      </Modal>
+      <Modal 
+        isOpen={isAddModalOpen} 
+        onClose={() => setIsAddModalOpen(false)} 
+        title="Add New Admin"
+      >
+        <form className="edit-form" onSubmit={handleAddAdmin}>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required />
+          </div>
+          <div className="form-group">
+            <label>Role</label>
+            <select name="role">
+              <option>Super Admin</option>
+              <option>Admin</option>
+              <option>Editor</option>
+              <option>Support</option>
+            </select>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn-secondary" onClick={() => setIsAddModalOpen(false)}>Cancel</button>
+            <button type="submit" className="btn-primary">Add Admin</button>
+          </div>
+        </form>
       </Modal>
     </div>
   );

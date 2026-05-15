@@ -4,9 +4,9 @@ import './ProductApproval.css';
 
 const ProductApproval = () => {
   const products = [
-    { id: 'P001', name: 'iPhone 15 Pro', merchant: 'Tech Haven', price: '$999', status: 'Approved', stock: 45 },
-    { id: 'P002', name: 'MacBook Air M2', merchant: 'Tech Haven', price: '$1299', status: 'Pending', stock: 12 },
-    { id: 'P004', name: 'Running Shoes', merchant: 'Sporty Life', price: '$120', status: 'Rejected', stock: 0 },
+    { id: 'P001', name: 'iPhone 15 Pro', merchant: 'Tech Haven', price: '₹99,900', status: 'Approved', stock: 45 },
+    { id: 'P002', name: 'MacBook Air M2', merchant: 'Tech Haven', price: '₹1,29,900', status: 'Pending', stock: 12 },
+    { id: 'P004', name: 'Running Shoes', merchant: 'Sporty Life', price: '₹1,200', status: 'Rejected', stock: 0 },
   ];
 
   return (

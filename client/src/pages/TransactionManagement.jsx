@@ -4,11 +4,11 @@ import './TransactionManagement.css';
 
 const TransactionManagement = () => {
   const transactions = [
-    { id: 'TXN789', user: 'Alex Johnson', method: 'Credit Card', ref: 'REF-00124', fee: '$2.50', amount: '$150.00', type: 'Deposit', date: '2024-03-14 10:30', status: 'Completed' },
-    { id: 'TXN790', user: 'Tech Haven', method: 'Bank Transfer', ref: 'REF-00125', fee: '$1.20', amount: '$85.20', type: 'Payment', date: '2024-03-14 11:15', status: 'Completed' },
-    { id: 'TXN791', user: 'Maria Garcia', method: 'E-Wallet', ref: 'REF-00126', fee: '$5.00', amount: '$500.00', type: 'Withdrawal', date: '2024-03-14 12:00', status: 'Pending' },
-    { id: 'TXN792', user: 'Sam Wilson', method: 'Internal', ref: 'REF-00127', fee: '$0.00', amount: '$12.00', type: 'Fee', date: '2024-03-14 13:45', status: 'Completed' },
-    { id: 'TXN793', user: 'Urban Style', method: 'Bank Transfer', ref: 'REF-00128', fee: '$15.00', amount: '$1200.00', type: 'Settlement', date: '2024-03-14 14:20', status: 'Failed' },
+    { id: 'TXN789', user: 'Alex Johnson', method: 'Credit Card', ref: 'REF-00124', fee: '₹2.50', amount: '₹150.00', type: 'Deposit', date: '2024-03-14 10:30', status: 'Completed' },
+    { id: 'TXN790', user: 'Tech Haven', method: 'Bank Transfer', ref: 'REF-00125', fee: '₹1.20', amount: '₹85.20', type: 'Payment', date: '2024-03-14 11:15', status: 'Completed' },
+    { id: 'TXN791', user: 'Maria Garcia', method: 'E-Wallet', ref: 'REF-00126', fee: '₹5.00', amount: '₹500.00', type: 'Withdrawal', date: '2024-03-14 12:00', status: 'Pending' },
+    { id: 'TXN792', user: 'Sam Wilson', method: 'Internal', ref: 'REF-00127', fee: '₹0.00', amount: '₹12.00', type: 'Fee', date: '2024-03-14 13:45', status: 'Completed' },
+    { id: 'TXN793', user: 'Urban Style', method: 'Bank Transfer', ref: 'REF-00128', fee: '₹15.00', amount: '₹1200.00', type: 'Settlement', date: '2024-03-14 14:20', status: 'Failed' },
   ];
 
   return (
@@ -27,14 +27,14 @@ const TransactionManagement = () => {
         <div className="mini-card gradient-blue">
           <div className="info">
             <span className="label white">Total Volume</span>
-            <span className="value white">$2,450,000</span>
+            <span className="value white">₹2,450,000</span>
           </div>
           <DollarSign size={40} className="icon-bg" />
         </div>
         <div className="mini-card gradient-red">
           <div className="info">
             <span className="label white">Pending Withdrawals</span>
-            <span className="value white">$12,450</span>
+            <span className="value white">₹12,450</span>
           </div>
           <RefreshCw size={40} className="icon-bg" />
         </div>

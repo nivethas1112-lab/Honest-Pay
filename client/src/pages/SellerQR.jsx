@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QrCode, Store, Download } from 'lucide-react';
 
 const SellerQR = () => {
+  const [qrs, setQrs] = useState([1, 2, 3, 4]);
+  const handleAssignNewQR = () => {
+    setQrs([...qrs, qrs.length + 1]);
+  };
   return (
     <div className="page-container">
       <div className="page-header">
         <h1>Seller QR Codes</h1>
-        <button className="btn btn-primary">Assign New QR</button>
+        <button className="btn btn-primary" onClick={handleAssignNewQR}>Assign New QR</button>
       </div>
       <div className="table-wrapper">
         <div className="table-header">
@@ -29,7 +33,7 @@ const SellerQR = () => {
             </tr>
           </thead>
           <tbody>
-            {[1,2,3,4].map((i, index) => (
+            {qrs.map((i, index) => (
               <tr key={i}>
                 <td>{index + 1}</td>
                 <td>

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Calendar, MapPin, Users, Clock, Edit, Trash2, ArrowLeft, BarChart3, Star } from 'lucide-react';
+import Modal from '../components/Modal';
 import './EventDetails.css';
 
 const EventDetails = () => {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   return (
     <div className="page-container">
       <div className="page-header">
@@ -14,8 +17,8 @@ const EventDetails = () => {
           </div>
         </div>
         <div className="header-actions">
-          <button className="btn btn-outline danger"><Trash2 size={18}/> Cancel Event</button>
-          <button className="btn btn-primary"><Edit size={18}/> Edit Details</button>
+          <button className="btn btn-outline danger" onClick={() => setIsCancelModalOpen(true)}><Trash2 size={18}/> Cancel Event</button>
+          <button className="btn btn-primary" onClick={() => setIsEditModalOpen(true)}><Edit size={18}/> Edit Details</button>
         </div>
       </div>
 
@@ -57,7 +60,7 @@ const EventDetails = () => {
             <div className="s-item">
               <BarChart3 size={24} className="icon green" />
               <div className="s-info">
-                <span className="s-val">$42,500</span>
+                <span className="s-val">₹42,500</span>
                 <span className="s-lbl">Projected Revenue</span>
               </div>
             </div>
@@ -78,6 +81,41 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
+
+      <Modal 
+        isOpen={isEditModalOpen} 
+        onClose={() => setIsEditModalOpen(false)} 
+        title="Edit Event Details"
+      >
+        <form className="edit-form" onSubmit={(e) => { e.preventDefault(); setIsEditModalOpen(false); alert('Event updated successfully!'); }}>
+          <div className="form-group">
+            <label>Event Name</label>
+            <input type="text" defaultValue="Summer Festival 2024" required />
+          </div>
+          <div className="form-group">
+            <label>Date</label>
+            <input type="date" defaultValue="2024-06-15" required />
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn-secondary" onClick={() => setIsEditModalOpen(false)}>Cancel</button>
+            <button type="submit" className="btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </Modal>
+
+      <Modal 
+        isOpen={isCancelModalOpen} 
+        onClose={() => setIsCancelModalOpen(false)} 
+        title="Cancel Event"
+      >
+        <div className="modal-body text-center" style={{padding: '20px 0'}}>
+          <p>Are you sure you want to cancel this event? This action cannot be undone.</p>
+          <div className="modal-footer" style={{marginTop: '20px', justifyContent: 'center'}}>
+            <button className="btn-secondary" onClick={() => setIsCancelModalOpen(false)}>No, Keep It</button>
+            <button className="btn btn-outline danger" onClick={() => { setIsCancelModalOpen(false); alert('Event cancelled.'); }}>Yes, Cancel Event</button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

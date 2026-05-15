@@ -3,8 +3,8 @@ import { DollarSign, Clock } from 'lucide-react';
 
 const Withdrawals = () => {
   const data = [
-    { id: 'W001', entity: 'Tech Haven', amount: '$1,500.00', status: 'Pending', requested: '2 hours ago' },
-    { id: 'W002', entity: 'Maria Garcia', amount: '$200.00', status: 'Completed', requested: '1 day ago' },
+    { id: 'W001', entity: 'Tech Haven', amount: '₹1,500.00', status: 'Pending', requested: '2 hours ago' },
+    { id: 'W002', entity: 'Maria Garcia', amount: '₹200.00', status: 'Completed', requested: '1 day ago' },
   ];
 
   return (
@@ -39,7 +39,7 @@ const Withdrawals = () => {
                 <td>{w.entity}</td>
                 <td>HDFC Bank - 50100****4521</td>
                 <td>{w.amount}</td>
-                <td>$2,450.00</td>
+                <td>₹2,450.00</td>
                 <td><span className={`status-pill ${w.status.toLowerCase()}`}>{w.status}</span></td>
                 <td>{w.status === 'Pending' && <button className="btn btn-primary sm">Process</button>}</td>
               </tr>

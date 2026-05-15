@@ -3,8 +3,8 @@ import { Store, Search } from 'lucide-react';
 
 const SellerTransactions = () => {
   const txns = [
-    { id: 'ST201', store: 'Tech Haven', amount: '$4,200.00', type: 'Settlement', date: '2024-03-14' },
-    { id: 'ST202', store: 'Urban Style', amount: '$850.00', type: 'Payout', date: '2024-03-14' },
+    { id: 'ST201', store: 'Tech Haven', amount: '₹4,200.00', type: 'Settlement', date: '2024-03-14' },
+    { id: 'ST202', store: 'Urban Style', amount: '₹850.00', type: 'Payout', date: '2024-03-14' },
   ];
 
   return (

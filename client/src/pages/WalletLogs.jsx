@@ -4,8 +4,8 @@ import './WalletLogs.css';
 
 const WalletLogs = () => {
   const logs = [
-    { id: 'L001', user: 'Alex Johnson', type: 'Credit', amount: '+$50.00', balance: '$150.00', date: '2024-03-14' },
-    { id: 'L002', user: 'Sam Wilson', type: 'Debit', amount: '-$20.00', balance: '$80.00', date: '2024-03-14' },
+    { id: 'L001', user: 'Alex Johnson', type: 'Credit', amount: '+₹50.00', balance: '₹150.00', date: '2024-03-14' },
+    { id: 'L002', user: 'Sam Wilson', type: 'Debit', amount: '-₹20.00', balance: '₹80.00', date: '2024-03-14' },
   ];
 
   return (

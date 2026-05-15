@@ -5,13 +5,14 @@ import './SellerDetails.css';
 
 const SellerDetails = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isVerifyModalOpen, setIsVerifyModalOpen] = useState(false);
   const [editingSeller, setEditingSeller] = useState(null);
   const [sellers, setSellers] = useState([
-    { id: 'S001', store: 'Tech Haven', owner: 'Robert Fox', category: 'Electronics', rating: 4.8, sales: 1240, revenue: '$45,200', status: 'Active' },
-    { id: 'S002', store: 'Urban Style', owner: 'Jenny Wilson', category: 'Fashion', rating: 4.5, sales: 850, revenue: '$12,800', status: 'Active' },
-    { id: 'S003', store: 'Home Decor Co', owner: 'Cody Fisher', category: 'Home', rating: 4.2, sales: 320, revenue: '$8,450', status: 'Pending' },
-    { id: 'S004', store: 'Green Grocers', owner: 'Kristin Watson', category: 'Grocery', rating: 4.9, sales: 2100, revenue: '$62,000', status: 'Active' },
-    { id: 'S005', store: 'Sporty Life', owner: 'Arlene McCoy', category: 'Sports', rating: 3.8, sales: 150, revenue: '$3,200', status: 'Inactive' },
+    { id: 'S001', store: 'Tech Haven', owner: 'Robert Fox', category: 'Electronics', rating: 4.8, sales: 1240, revenue: '₹45,200', status: 'Active' },
+    { id: 'S002', store: 'Urban Style', owner: 'Jenny Wilson', category: 'Fashion', rating: 4.5, sales: 850, revenue: '₹12,800', status: 'Active' },
+    { id: 'S003', store: 'Home Decor Co', owner: 'Cody Fisher', category: 'Home', rating: 4.2, sales: 320, revenue: '₹8,450', status: 'Pending' },
+    { id: 'S004', store: 'Green Grocers', owner: 'Kristin Watson', category: 'Grocery', rating: 4.9, sales: 2100, revenue: '₹62,000', status: 'Active' },
+    { id: 'S005', store: 'Sporty Life', owner: 'Arlene McCoy', category: 'Sports', rating: 3.8, sales: 150, revenue: '₹3,200', status: 'Inactive' },
   ]);
 
   const handleEdit = (seller) => {
@@ -25,6 +26,29 @@ const SellerDetails = () => {
     setIsEditModalOpen(false);
   };
 
+  const handleVerifySeller = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newSeller = {
+      id: 'S' + Date.now().toString().slice(-3),
+      store: formData.get('store'),
+      owner: 'New Owner',
+      category: 'General',
+      rating: 5.0,
+      sales: 0,
+      revenue: '₹0',
+      status: 'Active'
+    };
+    setSellers([...sellers, newSeller]);
+    setIsVerifyModalOpen(false);
+  };
+
+  const handleDeleteSeller = (id) => {
+    if (window.confirm("Are you sure you want to delete this seller?")) {
+      setSellers(sellers.filter(seller => seller.id !== id));
+    }
+  };
+
   return (
     <div className="page-container">
       <div className="page-header">
@@ -33,7 +57,7 @@ const SellerDetails = () => {
           <p className="page-subtitle">Monitor and manage merchant accounts and performance</p>
         </div>
         <div className="header-actions">
-          <button className="btn btn-primary">Verify New Seller</button>
+          <button className="btn btn-primary" onClick={() => setIsVerifyModalOpen(true)}>Verify New Seller</button>
         </div>
       </div>
 
@@ -56,7 +80,7 @@ const SellerDetails = () => {
           <div className="icon green"><DollarSign size={24} /></div>
           <div className="info">
             <span className="label">Total Revenue</span>
-            <span className="value">$1.2M</span>
+            <span className="value">₹1.2M</span>
           </div>
         </div>
         <div className="mini-card">
@@ -115,7 +139,7 @@ const SellerDetails = () => {
                     <button className="icon-btn edit" onClick={() => handleEdit(seller)} title="Edit">
                       <Edit size={16} />
                     </button>
-                    <button className="icon-btn delete" title="Delete">
+                    <button className="icon-btn delete" title="Delete" onClick={() => handleDeleteSeller(seller.id)}>
                       <Trash2 size={16} />
                     </button>
                   </div>
@@ -181,6 +205,26 @@ const SellerDetails = () => {
             </div>
           </form>
         )}
+      </Modal>
+      <Modal 
+        isOpen={isVerifyModalOpen} 
+        onClose={() => setIsVerifyModalOpen(false)} 
+        title="Verify New Seller"
+      >
+        <form className="edit-form" onSubmit={handleVerifySeller}>
+          <div className="form-group">
+            <label>Seller ID / Name</label>
+            <input type="text" name="store" required />
+          </div>
+          <div className="form-group">
+            <label>Verification Document</label>
+            <input type="file" required />
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn-secondary" onClick={() => setIsVerifyModalOpen(false)}>Cancel</button>
+            <button type="submit" className="btn-primary">Verify Seller</button>
+          </div>
+        </form>
       </Modal>
     </div>
   );

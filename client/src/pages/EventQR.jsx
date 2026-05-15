@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QrCode, Calendar, Download } from 'lucide-react';
 
 const EventQR = () => {
+  const [qrs, setQrs] = useState([1, 2]);
+  const handleCreateEventQR = () => {
+    setQrs([...qrs, qrs.length + 1]);
+  };
   return (
     <div className="page-container">
       <div className="page-header">
         <h1>Event QR Codes</h1>
-        <button className="btn btn-primary">Create Event QR</button>
+        <button className="btn btn-primary" onClick={handleCreateEventQR}>Create Event QR</button>
       </div>
       <div className="table-wrapper">
         <div className="table-header">
@@ -29,7 +33,7 @@ const EventQR = () => {
             </tr>
           </thead>
           <tbody>
-            {[1,2].map((i, index) => (
+            {qrs.map((i, index) => (
               <tr key={i}>
                 <td>{index + 1}</td>
                 <td>

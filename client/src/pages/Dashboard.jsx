@@ -8,6 +8,7 @@ import {
   ArrowDownRight,
   BarChart3
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
 const StatCard = ({ title, value, icon, trend, trendValue, color }) => (
@@ -29,6 +30,7 @@ const StatCard = ({ title, value, icon, trend, trendValue, color }) => (
 );
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <div className="dashboard">
       <header className="dashboard-header">
@@ -55,7 +57,7 @@ const Dashboard = () => {
         />
         <StatCard 
           title="Total Transactions" 
-          value="$452,890" 
+          value="₹452,890" 
           icon={<CreditCard size={24} />} 
           trend="down" 
           trendValue="3.1%" 
@@ -92,7 +94,7 @@ const Dashboard = () => {
         <div className="card recent-activity">
           <div className="card-header">
             <h2>Recent Transactions</h2>
-            <button className="view-all">View All</button>
+            <button className="btn btn-outline" onClick={() => navigate('/transactions/user')}>View All</button>
           </div>
           <div className="table-wrapper">
             <table className="data-table">
@@ -110,11 +112,11 @@ const Dashboard = () => {
               </thead>
               <tbody>
                 {[
-                  { id: 1, user: 'John Doe', type: 'Payment', amount: '+$150.00', status: 'Completed', time: '2 mins ago' },
-                  { id: 2, user: 'Apple Store', type: 'Merchant Pay', amount: '-$89.99', status: 'Pending', time: '15 mins ago' },
-                  { id: 3, user: 'Sarah Smith', type: 'Withdrawal', amount: '-$500.00', status: 'Completed', time: '1 hour ago' },
-                  { id: 4, user: 'Tech Hub', type: 'Refund', amount: '+$45.00', status: 'Processing', time: '3 hours ago' },
-                  { id: 5, user: 'Mike Ross', type: 'Payment', amount: '+$210.00', status: 'Completed', time: '5 hours ago' },
+                  { id: 1, user: 'John Doe', type: 'Payment', amount: '+₹150.00', status: 'Completed', time: '2 mins ago' },
+                  { id: 2, user: 'Apple Store', type: 'Merchant Pay', amount: '-₹89.99', status: 'Pending', time: '15 mins ago' },
+                  { id: 3, user: 'Sarah Smith', type: 'Withdrawal', amount: '-₹500.00', status: 'Completed', time: '1 hour ago' },
+                  { id: 4, user: 'Tech Hub', type: 'Refund', amount: '+₹45.00', status: 'Processing', time: '3 hours ago' },
+                  { id: 5, user: 'Mike Ross', type: 'Payment', amount: '+₹210.00', status: 'Completed', time: '5 hours ago' },
                 ].map((item, index) => (
                   <tr key={item.id}>
                     <td>{index + 1}</td>

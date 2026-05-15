@@ -4,9 +4,9 @@ import './OrderDetails.css';
 
 const OrderDetails = () => {
   const orders = [
-    { id: 'ORD551', customer: 'Alex Johnson', date: '2024-03-14', total: '$120.00', status: 'Delivered' },
-    { id: 'ORD552', customer: 'Maria Garcia', date: '2024-03-14', total: '$45.50', status: 'Processing' },
-    { id: 'ORD553', customer: 'Sam Wilson', date: '2024-03-14', total: '$300.00', status: 'Shipped' },
+    { id: 'ORD551', customer: 'Alex Johnson', date: '2024-03-14', total: '₹120.00', status: 'Delivered' },
+    { id: 'ORD552', customer: 'Maria Garcia', date: '2024-03-14', total: '₹45.50', status: 'Processing' },
+    { id: 'ORD553', customer: 'Sam Wilson', date: '2024-03-14', total: '₹300.00', status: 'Shipped' },
   ];
 
   return (

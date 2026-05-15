@@ -3,8 +3,8 @@ import { CreditCard, Search, ArrowRight } from 'lucide-react';
 
 const UserTransactions = () => {
   const txns = [
-    { id: 'UT101', user: 'Alex Johnson', amount: '$120.00', status: 'Success', date: '2024-03-14' },
-    { id: 'UT102', user: 'Maria Garcia', amount: '$45.50', status: 'Success', date: '2024-03-14' },
+    { id: 'UT101', user: 'Alex Johnson', amount: '₹120.00', status: 'Success', date: '2024-03-14' },
+    { id: 'UT102', user: 'Maria Garcia', amount: '₹45.50', status: 'Success', date: '2024-03-14' },
   ];
 
   return (

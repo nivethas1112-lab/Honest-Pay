@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QrCode, User, Download } from 'lucide-react';
 
 const UserQR = () => {
+  const [qrs, setQrs] = useState([1, 2, 3, 4, 5]);
+  const handleGenerateBatch = () => {
+    const newBatch = Array.from({ length: 5 }, (_, i) => qrs.length + i + 1);
+    setQrs([...qrs, ...newBatch]);
+  };
   return (
     <div className="page-container">
       <div className="page-header">
         <h1>User QR Codes</h1>
-        <button className="btn btn-primary">Generate Batch</button>
+        <button className="btn btn-primary" onClick={handleGenerateBatch}>Generate Batch</button>
       </div>
       <div className="table-wrapper">
         <div className="table-header">
@@ -29,7 +34,7 @@ const UserQR = () => {
             </tr>
           </thead>
           <tbody>
-            {[1,2,3,4,5].map((i, index) => (
+            {qrs.map((i, index) => (
               <tr key={i}>
                 <td>{index + 1}</td>
                 <td>
