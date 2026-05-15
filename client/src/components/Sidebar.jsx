@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, 
@@ -15,6 +15,12 @@ import {
 import './Sidebar.css';
 
 const Sidebar = () => {
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (name) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
+
   const menuItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/' },
     { 
@@ -94,19 +100,23 @@ const Sidebar = () => {
             <div key={item.name} className="menu-group">
               {item.subItems ? (
                 <>
-                  <button className="menu-item">
+                  <button 
+                    className={`menu-item ${openDropdown === item.name ? 'active' : ''}`}
+                    onClick={() => toggleDropdown(item.name)}
+                  >
                     <span className="icon">{item.icon}</span>
                     <span className="label">{item.name}</span>
                     <span className="chevron">
                       <ChevronDown size={16} />
                     </span>
                   </button>
-                  <div className="sub-menu">
+                  <div className={`sub-menu ${openDropdown === item.name ? 'open' : ''}`}>
                     {item.subItems.map(subItem => (
                       <NavLink 
                         key={subItem.name} 
                         to={subItem.path}
                         className={({ isActive }) => `sub-item ${isActive ? 'active' : ''}`}
+                        onClick={() => setOpenDropdown(null)}
                       >
                         {subItem.name}
                       </NavLink>

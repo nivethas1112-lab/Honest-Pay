@@ -43,7 +43,6 @@
 
 .menu-group {
   margin-bottom: 0;
-  position: relative;
 }
 
 .menu-item {
@@ -91,7 +90,6 @@
 .sub-menu {
   position: absolute;
   top: 100%;
-  left: 0;
   background-color: var(--bg-sidebar);
   border-radius: 0.5rem;
   min-width: 200px;
