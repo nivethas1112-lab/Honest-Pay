@@ -1,0 +1,119 @@
+.support-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mini-stat {
+  background: white;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mini-stat .lbl {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.mini-stat .val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+}
+
+.mini-stat .val.success { color: var(--success); }
+.mini-stat .val.warning { color: var(--warning); }
+
+.ticket-items-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-row {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.ticket-row:hover {
+  background-color: #f8fafc;
+}
+
+.priority-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.priority-line.high { background: var(--danger); }
+.priority-line.medium { background: var(--warning); }
+.priority-line.low { background: var(--success); }
+
+.ticket-main-info {
+  flex: 1;
+  padding-left: 1rem;
+}
+
+.ticket-id-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tid {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.ttime {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ticket-main-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.ticket-main-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.ticket-status-col {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.arrow-icon {
+  color: #cbd5e1;
+  transition: var(--transition);
+}
+
+.ticket-row:hover .arrow-icon {
+  transform: translateX(5px);
+  color: var(--primary-blue);
+}
+
+.status-badge.in-progress { background: #dbeafe; color: #1e40af; }
+.status-badge.closed { background: #f1f5f9; color: #64748b; }

@@ -1,0 +1,137 @@
+.support-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1.5rem;
+}
+
+.contact-card, .stats-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+.contact-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.contact-item svg {
+  color: var(--primary-blue);
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.stat-item:last-child { margin-bottom: 0; }
+
+.stat-item .lbl {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.stat-item .val {
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-item {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.ticket-item:hover {
+  background: #f8fafc;
+}
+
+.priority-indicator {
+  width: 4px;
+  height: 40px;
+  border-radius: 2px;
+  margin-right: 1.5rem;
+}
+
+.priority-indicator.high { background: var(--danger); }
+.priority-indicator.medium { background: var(--warning); }
+.priority-indicator.low { background: var(--success); }
+
+.ticket-info {
+  flex-grow: 1;
+}
+
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.ticket-id {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.ticket-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.ticket-info h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.125rem;
+}
+
+.ticket-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.ticket-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.arrow {
+  color: #cbd5e1;
+  transition: var(--transition);
+}
+
+.ticket-item:hover .arrow {
+  transform: translateX(5px);
+  color: var(--primary-blue);
+}
+
+.status-pill.in-progress { background: #dbeafe; color: #1e40af; }
+
+@media (max-width: 992px) {
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+}

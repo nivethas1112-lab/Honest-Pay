@@ -1,0 +1,22 @@
+.avatar.stall {
+  background: #f0fdf4;
+  color: #10b981;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.btn.sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.btn.success { color: var(--success); border-color: var(--success); }
+.btn.danger { color: var(--danger); border-color: var(--danger); }
+
+.status-badge.approved { background: #dcfce7; color: #15803d; }
+.status-badge.pending { background: #fffbeb; color: #b45309; }

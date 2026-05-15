@@ -1,0 +1,4 @@
+.txn-type.credit { color: var(--success); }
+.txn-type.debit { color: var(--danger); }
+.amount.positive { color: var(--success); }
+.amount.negative { color: var(--danger); }
