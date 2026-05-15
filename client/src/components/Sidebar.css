@@ -127,3 +127,15 @@
   background-color: rgba(239, 68, 81, 0.1);
   font-weight: 700;
 }
+
+@media (max-width: 768px) {
+  .sub-menu {
+    position: fixed;
+    top: calc(var(--header-height) + 60px);
+    left: 1rem;
+    right: 1rem;
+    min-width: unset;
+    width: auto;
+    box-sizing: border-box;
+  }
+}
